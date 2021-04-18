@@ -1,7 +1,7 @@
 # ⚽ fplcache
 
 ## Overview
-This repository contains a cache of [https://fantasy.premierleague.com/](Fantasy Premier League) bootstrap data, a JSON object returned by the https://fantasy.premierleague.com/api/bootstrap-static/ endpoint. To significantly reduce storage size, these JSON objects are cached using the LZMA `.xz` file format. This cache is updated four times a day, spaced at 6 hour intervals, using [https://docs.github.com/en/actions](GitHub Actions).
+This repository contains a cache of [Fantasy Premier League](https://fantasy.premierleague.com/) bootstrap data, a JSON object returned by the https://fantasy.premierleague.com/api/bootstrap-static/ endpoint. To significantly reduce storage size, these JSON objects are cached using the LZMA `.xz` file format. This cache is updated four times a day, spaced at 6 hour intervals, using [GitHub Actions](https://docs.github.com/en/actions).
 
 ## Organization
 Cached objects are organized as follows within the `cache` directory:
