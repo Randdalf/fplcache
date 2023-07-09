@@ -54,7 +54,7 @@ optional arguments:
                         diff format (default: context)
 ```
 
-### 'dump.py'
+### `dump.py`
 ```
 usage: dump.py [-h] [-p PROPS] [-n LIMIT] [-o OUT] [-v] [--cache CACHE]
 
