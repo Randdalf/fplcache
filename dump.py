@@ -40,7 +40,7 @@ def main(args):
     props = args.props.split(',')
     with args.out.open('wt', encoding='utf-8', newline='') as c:
         writer = csv.writer(c)
-        writer.writerow(','.join(['time'] + props))
+        writer.writerow(['time'] + props)
         for i, (time, path) in enumerate(paths):
             if args.verbose:
                 print(f'[{i+1:4d}/{len(paths):4d}] {path}')
