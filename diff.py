@@ -15,6 +15,7 @@ differs = {
     'unified': difflib.unified_diff
 }
 
+
 def main(args):
     with lzma.open(args.a, 'rt', encoding='utf-8') as f:
         a = f.readlines()
@@ -24,6 +25,7 @@ def main(args):
 
     diff = differs[args.format](a, b, fromfile=str(args.a), tofile=str(args.b))
     sys.stdout.writelines(diff)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(

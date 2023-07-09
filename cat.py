@@ -8,9 +8,11 @@ import argparse
 import lzma
 from pathlib import Path
 
+
 def main(args):
     with lzma.open(args.file, 'rt', encoding='utf-8') as f:
         print(f.read())
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(

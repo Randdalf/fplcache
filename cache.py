@@ -11,6 +11,7 @@ import lzma
 from pathlib import Path
 import requests
 
+
 def main(args):
     # Fetch the FPL bootstrap JSON.
     print(f'Fetching {args.url}... ', end='', flush=True)
@@ -35,6 +36,7 @@ def main(args):
     with lzma.open(path, 'wt', encoding='utf-8') as f:
         f.write(pretty)
     print(f'OK.')
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
