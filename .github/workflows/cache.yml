@@ -19,6 +19,28 @@ jobs:
         pip install -r requirements.txt
     - name: Fetch, cache and compress bootstrap data.
       run: python cache.py
+    - name: Fetch, cache and compress live gameweek data.
+      run: |-
+        event_id=$(python - <<'PY'
+        import json
+        import lzma
+        from pathlib import Path
+
+        paths = Path('cache').glob('*/*/*/*.json.xz')
+        bootstrap = max(
+            paths,
+            key=lambda path: tuple(int(part) for part in path.relative_to('cache').parts[:3]) + (int(path.name[:4]),)
+        )
+        with lzma.open(bootstrap, 'rt', encoding='utf-8') as f:
+            data = json.load(f)
+
+        current = next(event for event in data['events'] if event['is_current'])
+        print(current['id'])
+        PY
+        )
+        python cache.py \
+          --url "https://fantasy.premierleague.com/api/event/${event_id}/live/" \
+          --cache cache/live
     - name: Fetch, cache and compress fixture data.
       run: python cache.py --url https://fantasy.premierleague.com/api/fixtures/ --cache cache/fixtures
     - name: Push updated cache.
